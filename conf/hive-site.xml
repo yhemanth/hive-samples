@@ -1,0 +1,6 @@
+<configuration>
+  <property>
+    <name>javax.jdo.option.ConnectionURL</name>
+    <value>jdbc:derby:;databaseName=/Users/hemanty/software/hive-0.9.0/data/metastore_db;create=true</value>
+  </property>
+</configuration>
