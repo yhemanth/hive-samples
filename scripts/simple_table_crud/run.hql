@@ -9,6 +9,7 @@ row format delimited
 fields terminated by ',';
 show tables;
 dfs -ls /user/hive/warehouse/samples.db/;
+describe simple_table;
 describe extended simple_table;
 describe formatted simple_table;
 drop table if exists simple_table;
