@@ -12,5 +12,6 @@ dfs -ls /user/hive/warehouse/samples.db/;
 describe simple_table;
 describe extended simple_table;
 describe formatted simple_table;
+load data local inpath '${hivevar:datadir}/simple_table_data.txt' overwrite into table simple_table;
 drop table if exists simple_table;
 
