@@ -39,3 +39,6 @@ select * from simple_table;
 --Cleanup the table
 drop table if exists simple_table;
 
+-- Show underlying data is deleted
+dfs -lsr /user/hive/warehouse/samples.db;
+
