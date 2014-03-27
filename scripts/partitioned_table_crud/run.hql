@@ -27,6 +27,8 @@ load data local inpath '${hivevar:datadir}/partitioned_table_data.txt' overwrite
 
 -- describe partitions
 show partitions partitioned_table;
+show partitions partitioned_table partition(int_partition_col=1);
+show partitions partitioned_table partition(string_partition_col="b");
 
 -- show DFS structure
 dfs -lsr /user/hive/warehouse/samples.db/partitioned_table;
