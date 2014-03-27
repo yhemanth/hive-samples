@@ -28,7 +28,7 @@ dfs -lsr /user/hive/warehouse/samples.db/simple_table;
 !ls ${hivevar:datadir};
 
 -- Load data from HDFS
-dfs -copyFromLocal ${hivevar:datadir}/simple_table_data.txt ${hivevar:unique_id}/simple_table_data_hdfs.txt;
+dfs -copyFromLocal ${hivevar:datadir}/simple_table_data.txt ${hivevar:unique_id}/simple_table_data.txt;
 load data inpath '${hivevar:unique_id}' into table simple_table;
 dfs -ls ${hivevar:unique_id};
 dfs -lsr /user/hive/warehouse/samples.db/simple_table;
