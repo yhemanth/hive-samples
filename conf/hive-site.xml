@@ -7,4 +7,8 @@
     <name>hive.exec.mode.local.auto</name>
     <value>true</value>
   </property>
+  <property>
+    <name>hive.cli.errors.ignore</name>
+    <value>true</value>
+  </property>
 </configuration>

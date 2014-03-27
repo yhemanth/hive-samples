@@ -1,5 +1,6 @@
 use samples;
 
+
 create table if not exists partitioned_table (
   int_col int,
   string_col string
@@ -19,9 +20,9 @@ show partitions partitioned_table;
 
 load data local inpath '${hivevar:datadir}/partitioned_table_data.txt' overwrite into table partitioned_table
   partition (int_partition_col = 1, string_partition_col = "a");
-load data local inpath '${hivevar:datadir}/partitioned_table_data.txt' into table partitioned_table
+load data local inpath '${hivevar:datadir}/partitioned_table_data.txt' overwrite into table partitioned_table
   partition (int_partition_col = 1, string_partition_col = "b");
-load data local inpath '${hivevar:datadir}/partitioned_table_data.txt' into table partitioned_table
+load data local inpath '${hivevar:datadir}/partitioned_table_data.txt' overwrite into table partitioned_table
   partition (int_partition_col = 2, string_partition_col = "b");
 
 -- describe partitions
@@ -41,5 +42,11 @@ select int_col, int_partition_col, string_partition_col from partitioned_table w
 
 -- select using 2nd partition column
 select int_col, int_partition_col, string_partition_col from partitioned_table where string_partition_col="b";
+
+-- set the strict mode to fail on not specifying partition
+set hive.mapred.mode=strict;
+
+-- select without partition in query to demo failure
+select int_col, int_partition_col, string_partition_col from partitioned_table;
 
 drop table if exists partitioned_table;
