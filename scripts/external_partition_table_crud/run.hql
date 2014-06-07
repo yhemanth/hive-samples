@@ -73,4 +73,16 @@ show partitions external_partition_table;
 -- shouldn't affect data
 dfs -ls /user/${system:user.name}/${unique_id}/p_string_col=a;
 
+-- update a partition by copying data into new location, and updating location
+dfs -mv /user/${system:user.name}/${unique_id}/p_string_col=b/ /user/${system:user.name}/${unique_id}/p_string_col=new_b/;
+
+-- describe should reflect old location, but won't return any results
+describe formatted external_partition_table partition (p_string_col='b');
+select * from external_partition_table where p_string_col='b';
+
+-- set the new location
+alter table external_partition_table partition (p_string_col='b') set location 'hdfs:///user/${system:user.name}/${unique_id}/p_string_col=new_b';
+describe formatted external_partition_table partition (p_string_col='b');
+select * from external_partition_table where p_string_col='b';
+
 drop table if exists external_partition_table;
