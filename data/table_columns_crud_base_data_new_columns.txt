@@ -1,0 +1,5 @@
+1,string1,1.0
+2,string2,2.0
+3,string3,3.0
+4,string4,4.0
+5,string5,5.0
