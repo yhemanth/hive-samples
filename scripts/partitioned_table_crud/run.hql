@@ -51,4 +51,8 @@ set hive.mapred.mode=strict;
 -- select without partition in query to demo failure
 select int_col, int_partition_col, string_partition_col from partitioned_table;
 
+-- delete a partition
+-- the below should have worked, however isn't because of HIVE-3063. should work with upgraded version of hive.
+-- alter table partitioned_table drop if exists partition (int_partition_col=1, string_partition_col='a');
+
 drop table if exists partitioned_table;

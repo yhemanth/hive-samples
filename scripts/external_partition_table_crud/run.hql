@@ -1,7 +1,7 @@
 use samples;
 
 -- create an external partition table
-create table if not exists external_partition_table (
+create external table if not exists external_partition_table (
   int_col int,
   string_col string
 ) partitioned by (
@@ -65,5 +65,12 @@ dfs -put ${datadir}/insert_into_external_partition_table_data_partition_3.txt /u
 
 -- now query will give results
 select * from external_partition_table where p_string_col='c';
+
+-- delete partition
+alter table external_partition_table drop if exists partition (p_string_col='a');
+show partitions external_partition_table;
+
+-- shouldn't affect data
+dfs -ls /user/${system:user.name}/${unique_id}/p_string_col=a;
 
 drop table if exists external_partition_table;
