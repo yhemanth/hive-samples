@@ -11,3 +11,11 @@ alter table base_table add columns (
 load data local inpath '${hivevar:datadir}/table_columns_crud_base_data_new_columns.txt' into table base_table partition (p_string_col='b');
 
 select * from base_table;
+
+-- remove back the column
+alter table base_table replace columns (
+  int_column int,
+  string_column string
+);
+
+select * from base_table;
