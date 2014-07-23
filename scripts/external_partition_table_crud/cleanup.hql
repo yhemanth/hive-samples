@@ -1,2 +1,2 @@
 drop database if exists samples;
-dfs -rmr ${unique_id};
+dfs -rm -r ${unique_id};

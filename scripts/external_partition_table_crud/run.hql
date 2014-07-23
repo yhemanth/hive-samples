@@ -11,7 +11,7 @@ row format delimited
 fields terminated by ',';
 
 -- load data into table through HDFS, as if done by another process
-dfs -mkdir /user/${system:user.name}/${unique_id}/p_string_col=a;
+dfs -mkdir -p /user/${system:user.name}/${unique_id}/p_string_col=a;
 dfs -put ${datadir}/insert_into_external_partition_table_data_partition_1.txt /user/${system:user.name}/${unique_id}/p_string_col=a/;
 
 -- still no partitions
@@ -32,7 +32,7 @@ show partitions external_partition_table;
 select * from external_partition_table;
 
 -- load data into another partition
-dfs -mkdir /user/${system:user.name}/${unique_id}/p_string_col=b;
+dfs -mkdir -p /user/${system:user.name}/${unique_id}/p_string_col=b;
 dfs -put ${datadir}/insert_into_external_partition_table_data_partition_2.txt /user/${system:user.name}/${unique_id}/p_string_col=b/;
 
 -- show that new data is still not queryable, as partition is not added
@@ -74,7 +74,8 @@ show partitions external_partition_table;
 dfs -ls /user/${system:user.name}/${unique_id}/p_string_col=a;
 
 -- update a partition by copying data into new location, and updating location
-dfs -mv /user/${system:user.name}/${unique_id}/p_string_col=b/ /user/${system:user.name}/${unique_id}/p_string_col=new_b/;
+dfs -mkdir -p /user/${system:user.name}/${unique_id}/p_string_col=new_b/;
+dfs -mv /user/${system:user.name}/${unique_id}/p_string_col=b/* /user/${system:user.name}/${unique_id}/p_string_col=new_b/;
 
 -- describe should reflect old location, but won't return any results
 describe formatted external_partition_table partition (p_string_col='b');
