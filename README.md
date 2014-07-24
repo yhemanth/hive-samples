@@ -16,5 +16,5 @@ Usage
 * Edit conf/hive-site.xml, and set javax.jdo.option.ConnectionURL to point to a path of your choice.
 * Set HADOOP_HOME, HIVE_HOME and add Hadoop and Hive bin locations to the system OS path
 * cd bin
-* Execute run.sh <subdirectory-name-under-scripts-directory>, e.g. run.sh external_table_crud
+* Execute run.sh &lt;subdirectory-name-under-scripts-directory&gt;, e.g. run.sh external_table_crud
 
