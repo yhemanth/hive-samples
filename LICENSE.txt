@@ -1,25 +1,3 @@
-hive-samples
-============
-
-hive-samples is a project that demonstrates various features of Apache Hive.
-
-Dependencies
-------------
-
-* Apache Hadoop 2.x.y
-* Apache Hive 0.13.x
-
-Usage
------
-
-* Clone the repository
-* Edit conf/hive-site.xml, and set javax.jdo.option.ConnectionURL to point to a path of your choice.
-* Set HADOOP_HOME, HIVE_HOME and add Hadoop and Hive bin locations to the system OS path
-* cd bin
-* Execute run.sh &lt;subdirectory-name-under-scripts-directory&gt;, e.g. run.sh external_table_crud
-
-License
--------
 Copyright (c) 2015 Hemanth Yamijala
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
