@@ -1,7 +1,7 @@
 <configuration>
   <property>
     <name>javax.jdo.option.ConnectionURL</name>
-    <value>jdbc:derby:;databaseName=/Users/hemanty/software/apache-hive-0.13.1-bin/data/metastore_db;create=true</value>
+    <value>jdbc:derby:;databaseName=/Users/yhemanth/software/apache-hive-0.13.1-bin/data/metastore_db;create=true</value>
   </property>
   <property>
     <name>hive.exec.mode.local.auto</name>
@@ -9,7 +9,7 @@
   </property>
   <property>
     <name>mapreduce.framework.name</name>
-    <value>local</value>
+    <value>yarn</value>
   </property>
   <property>
     <name>hive.cli.errors.ignore</name>
